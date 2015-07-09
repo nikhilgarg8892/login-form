@@ -1,0 +1,138 @@
+<?php
+session_start();
+if(!empty($_SESSION['errors']))
+{
+	$errors = $_SESSION['errors'];
+	}
+
+
+?>
+
+<!doctype html>
+<html>
+<head>
+<link href="css regis.css" rel="stylesheet" type="text/css">
+<meta charset="utf-8">
+<title>Registration Form</title>
+</head>
+
+<body>
+<div class="top">top </div>
+<div class="middle">
+  <h2> Login Form</h2>
+  <div class="area" style="border:solid blue">
+    <form method="post" action="action/doregis.php">
+      <div class="regform">
+        <h1> Registration Form </h1>
+        <table>
+          <tr>
+            <td> First Name</td>
+            <td><input type="text" name="firstname" placeholder="First Name"></td>
+          
+          
+            <td><span class="errors">
+              <?php 
+	if(isset($errors['firstname']))
+	{
+		echo $errors['firstname'];
+		unset($errors['errors']['firstname']);
+		}
+	
+	?>
+              </span></td></tr>
+          <tr>
+            <td> Last Name</td>
+            <td><input type="text" name="lastname" placeholder="LAst Name"></td>
+          
+          
+            <td><span class="errors">
+              <?php 
+	if(isset($errors['lastname']))
+	{
+		echo $errors['lastname'];
+		unset($errors['errors']['lastname']);
+		}
+	
+	?>
+              </span></td></tr>
+          <tr>
+            <td> Mobile Number</td>
+            <td><input type="tel" name="mobile" placeholder="mobile number"></td>
+            <td><span class="errors">
+              <?php 
+	if(isset($errors['mobilenumber']))
+	{
+		echo $errors['mobilenumber'];
+		unset($errors['errors']['mobilenumber']);
+		}
+	
+	?>
+              </span></td>
+          </tr>
+          <tr>
+            <td>Email Address</td>
+            <td><input type="email" name="email" placeholder="email"></td>
+            <td><span class="errors">
+              <?php 
+	if(isset($errors['email']))
+	{
+		echo $errors['email'];
+		unset($errors['errors']['email']);
+		}
+	
+	?>
+              </span></td>
+          </tr>
+          <tr>
+            <td> Enter Password</td>
+            <td><input type="password" name="password" placeholder="password"></td>
+            <td><span class="errors">
+              <?php 
+	if(isset($errors['password']))
+	{
+		echo $errors['password'];
+		unset($errors['errors']['password']);
+		}
+	
+	?>
+              </span></td>
+          </tr>
+          <tr>
+            <td> Confrim Password</td>
+            <td><input type="password" name="confrimpassword" placeholder="confirm password"></td>
+            <td><span class="errors">
+              <?php 
+			  
+	if(isset($errors['confrimpassword']))
+	{
+		echo $errors['confrimpassword'];
+		unset($errors['errors']['confrimpassword']);
+		}
+	
+	?>
+              </span></td>
+          </tr>
+        </table>
+        <input type="submit" name="submit" value="Submit" style="margin-left:50px">
+        <input type="reset"  name="reset"value="Reset" style="margin-left:50px">
+      </div>
+    </form>
+  </div>
+</div>
+<div class="bottom">bottom
+<label >
+ <?php   
+if (isset($_SESSION['msg']))
+{
+	echo $_SESSION['msg'];
+	unset($_SESSION['msg']);
+	
+	}
+	
+
+
+?> </label>
+
+ </div>
+</body>
+</html>
